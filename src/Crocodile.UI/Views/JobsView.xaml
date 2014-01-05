@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Crocodile.UI.Views.JobsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:cal="http://www.caliburnproject.org">
+    <xctk:BusyIndicator IsBusy="{Binding IsBusy}">
+       <Grid Margin="9">
+           <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*"/>
+               <ColumnDefinition Width="9"/>
+               <ColumnDefinition Width="3*"/>
+           </Grid.ColumnDefinitions>
+           <ListBox x:Name="Jobs">
+               <ListBox.ItemTemplate>
+                   <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                   </DataTemplate>
+               </ListBox.ItemTemplate>
+           </ListBox>
+           <GridSplitter Grid.Column="1" 
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Stretch"
+                         ShowsPreview="True"
+                         Width="9"/>
+           
+           <ListBox x:Name="SelectedJob_Pages"
+                    Grid.Column="2"
+                    SelectionMode="Extended"/>
+       </Grid> 
+    </xctk:BusyIndicator>
+</UserControl>
