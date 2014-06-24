@@ -13,11 +13,13 @@
 		private ObservableCollection<Job> _jobs;
 		private bool _isBusy;
 		private Job _selectedJob;
+		private ObservableCollection<string> _jobFiles; 
 
 		public JobsViewModel()
 		{
 			Jobs = LoadJobs();
 			DisplayName = "File Chooser";
+			_jobFiles = new ObservableCollection<string>();
 		}
 
 		public ObservableCollection<Job> Jobs
@@ -38,11 +40,21 @@
 			{
 				if (Equals(value, _selectedJob)) return;
 				_selectedJob = value;
+				JobFiles = new ObservableCollection<string>(_selectedJob.Pages);
 				NotifyOfPropertyChange();
 			}
 		}
 
-		public ObservableCollection<string> JobFiles { get; set; }
+		public ObservableCollection<string> JobFiles
+		{
+			get { return _jobFiles; }
+			set
+			{
+				if (_jobFiles.Equals(value)) return;
+				_jobFiles = value;
+				NotifyOfPropertyChange();
+			}
+		}
 
 		public void RefreshProjects()
 		{
@@ -85,7 +97,7 @@
 
 			if (!File.Exists(templatePath))
 			{
-				throw new FileNotFoundException("Unable to find Excel report template");
+				throw new FileNotFoundException("Unable to find JobFolders data file");
 			}
 
 			var jobs = File.ReadAllLines(templatePath)

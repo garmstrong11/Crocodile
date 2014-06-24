@@ -23,7 +23,7 @@
                          ShowsPreview="True"
                          Width="9"/>
            
-           <ListBox x:Name="SelectedJob_Pages"
+           <ListBox x:Name="JobFiles"
                     Grid.Column="2"
                     SelectionMode="Extended"/>
        </Grid> 
