@@ -9,7 +9,8 @@
 
 		public ShellViewModel()
 		{
-			Items.Add(new JobsViewModel());
+			//Items.Add(new JobsViewModel());
+			Items.Add(new LibraryViewModel());
 		}
 
 		//public IEnumerable<IScreen> Items

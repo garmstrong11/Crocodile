@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Domain\CopydotFileTests.cs" />
     <Compile Include="Domain\JobTests.cs" />
+    <Compile Include="Integration\AceLibraryIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -68,6 +69,10 @@
     <ProjectReference Include="..\Crocodile.Domain\Crocodile.Domain.csproj">
       <Project>{254fc33d-ca9b-466c-ad40-768d4239aa3e}</Project>
       <Name>Crocodile.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crocodile.UI\Crocodile.UI.csproj">
+      <Project>{2ef76951-0b0c-49d1-b428-3652eb1fb116}</Project>
+      <Name>Crocodile.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
