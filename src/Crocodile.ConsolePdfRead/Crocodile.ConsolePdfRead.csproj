@@ -47,12 +47,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Crocodile.PdfFileAnalyzer\Crocodile.PdfFileAnalyzer.csproj">
-      <Project>{5d3900c3-dc0e-4443-8076-7c9d93ce3a5c}</Project>
-      <Name>Crocodile.PdfFileAnalyzer</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
