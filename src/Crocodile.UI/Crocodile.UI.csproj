@@ -94,6 +94,7 @@
     <Compile Include="Infrastructure\DebugLogger.cs" />
     <Compile Include="Infrastructure\SiBootstrapper.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
+    <Compile Include="ViewModels\CategoryRepo.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CrocScreen.cs" />
     <Compile Include="ViewModels\ICrocScreen.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="ViewModels\LibraryViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
     <Compile Include="Views\LibraryView.xaml.cs">
       <DependentUpon>LibraryView.xaml</DependentUpon>
     </Compile>

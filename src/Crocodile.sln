@@ -16,10 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{88C03B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crocodile.Tests", "Crocodile.Tests\Crocodile.Tests.csproj", "{F9C72E18-6180-487B-88D6-9D4EFAA345B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crocodile.PdfFileAnalyzer", "Crocodile.PdfFileAnalyzer\Crocodile.PdfFileAnalyzer.csproj", "{5D3900C3-DC0E-4443-8076-7C9D93CE3A5C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crocodile.ConsolePdfRead", "Crocodile.ConsolePdfRead\Crocodile.ConsolePdfRead.csproj", "{F68AD6C8-B79F-423E-870E-B1D9488C79E5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crocodile.CleanupConsole", "Crocodile.CleanupConsole\Crocodile.CleanupConsole.csproj", "{9B43A70C-5B92-4E67-B24D-DA8343E426C9}"
 EndProject
 Global
@@ -40,14 +36,6 @@ Global
 		{F9C72E18-6180-487B-88D6-9D4EFAA345B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9C72E18-6180-487B-88D6-9D4EFAA345B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9C72E18-6180-487B-88D6-9D4EFAA345B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D3900C3-DC0E-4443-8076-7C9D93CE3A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D3900C3-DC0E-4443-8076-7C9D93CE3A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D3900C3-DC0E-4443-8076-7C9D93CE3A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D3900C3-DC0E-4443-8076-7C9D93CE3A5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F68AD6C8-B79F-423E-870E-B1D9488C79E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F68AD6C8-B79F-423E-870E-B1D9488C79E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F68AD6C8-B79F-423E-870E-B1D9488C79E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F68AD6C8-B79F-423E-870E-B1D9488C79E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B43A70C-5B92-4E67-B24D-DA8343E426C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9B43A70C-5B92-4E67-B24D-DA8343E426C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B43A70C-5B92-4E67-B24D-DA8343E426C9}.Release|Any CPU.ActiveCfg = Release|Any CPU

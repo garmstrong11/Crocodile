@@ -1,50 +1,36 @@
 ﻿namespace Crocodile.UI.ViewModels
 {
-	using System.Collections.Generic;
+	using System.IO;
+	using System.Linq;
 	using System.Text.RegularExpressions;
-	using Caliburn.Micro;
 
-	public class CategoryViewModel : PropertyChangedBase
+	public class CategoryViewModel : TreeViewItemViewModel
 	{
-		private string _name;
-		private Regex _catRegex;
-		private IList<ProjectViewModel> _projects;
+		private readonly string _name;
+		private readonly Regex _catRegex;
 
-		public CategoryViewModel()
+		public CategoryViewModel(string name, string regex)
+			: base(null)
 		{
-			Projects = new List<ProjectViewModel>();
+			_name = name;
+			_catRegex = new Regex(regex, RegexOptions.IgnoreCase | RegexOptions.Compiled);
 		}
 
 		public string Name
 		{
 			get { return _name; }
-			set
-			{
-				if (value == _name) return;
-				_name = value;
-				NotifyOfPropertyChange(() => Name);
-			}
 		}
 
-		public Regex CatRegex
+		protected override void LoadChildren()
 		{
-			get { return _catRegex; }
-			set
-			{
-				if (Equals(value, _catRegex)) return;
-				_catRegex = value;
-				NotifyOfPropertyChange(() => CatRegex);
-			}
-		}
+			var projectDirs = Directory
+				.GetDirectories(Properties.Settings.Default.SourceDir, "*_cd", SearchOption.TopDirectoryOnly)
+				.Where(d => _catRegex.IsMatch(Path.GetFileName(d) ?? ""))
+				.OrderBy(Path.GetFileName)
+				.ToList();
 
-		public IList<ProjectViewModel> Projects
-		{
-			get { return _projects; }
-			set
-			{
-				if (Equals(value, _projects)) return;
-				_projects = value;
-				NotifyOfPropertyChange(() => Projects);
+			foreach (var projectDir in projectDirs) {
+				Children.Add(new ProjectViewModel(projectDir, this));
 			}
 		}
 	}

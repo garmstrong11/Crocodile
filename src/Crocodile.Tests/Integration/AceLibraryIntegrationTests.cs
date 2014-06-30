@@ -14,13 +14,13 @@
 			lib.Categories.Should().NotBeEmpty();
 		}
 
-		[Test]
-		public void FindProjects_FindsProjects()
-		{
-			var lib = new AceLibrary();
-			lib.FindProjects();
+		//[Test]
+		//public void FindProjects_FindsProjects()
+		//{
+		//	var lib = new AceLibrary();
+		//	lib.FindProjects();
 
-			lib.Categories[1].Projects.Should().NotBeEmpty();
-		}
+		//	lib.Categories[1].Projects.Should().NotBeEmpty();
+		//}
 	}
 }

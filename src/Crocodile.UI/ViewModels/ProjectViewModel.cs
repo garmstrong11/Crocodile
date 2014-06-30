@@ -2,61 +2,71 @@
 {
 	using System.Collections.Generic;
 	using System.IO;
-	using Caliburn.Micro;
+	using System.Linq;
+	using System.Text.RegularExpressions;
 	using Domain;
 
-	public class ProjectViewModel : PropertyChangedBase
+	public class ProjectViewModel : TreeViewItemViewModel
 	{
-		private string _name;
-		private DirectoryInfo _directoryInfo;
-		private IList<BookViewModel> _books;
-		private CategoryViewModel _category;
+		private static readonly string pathTrailer1 = @"UserDefinedFolders\Customer Originals";
+		private static readonly string pathTrailer2 = @"UserDefinedFolders\PartsMaster\Customer Originals";
 
-		public ProjectViewModel(DirectoryInfo info)
+		static readonly Regex ValidRegex = new Regex(@"^(\d+) +(.*)[ -]+[Pp]g? ?0?(\d+).*\.(PDF|TIF)",
+			RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
+		private readonly string _name;
+		private readonly string _path;
+
+		public ProjectViewModel(string path, TreeViewItemViewModel parent)
+			: base(parent)
 		{
-			Name = info.FullName.Split(new[] {'\\'})[5];
-			DirectoryInfo = info;
-
-			Books = new List<BookViewModel>();
+			_path = path;
+			_name = _path.Split(new[] {'\\'})[5].Replace("_cd", "");
 		}
 
 		public string Name
 		{
 			get { return _name; }
-			set
-			{
-				if (value == _name) return;
-				_name = value;
-				NotifyOfPropertyChange(() => Name);
-			}
 		}
 
-		public DirectoryInfo DirectoryInfo
+		protected override void LoadChildren()
 		{
-			get { return _directoryInfo; }
-			set
-			{
-				if (Equals(value, _directoryInfo)) return;
-				_directoryInfo = value;
-				NotifyOfPropertyChange(() => DirectoryInfo);
-			}
-		}
+			IEnumerable<string> paths = new[]
+				{
+				Path.Combine(_path, pathTrailer1),
+				Path.Combine(_path, pathTrailer2)
+				};
 
-		public IList<BookViewModel> Books
-		{
-			get { return _books; }
-			set
-			{
-				if (Equals(value, _books)) return;
-				_books = value;
-				NotifyOfPropertyChange(() => Books);
-			}
-		}
+			var searchPaths = paths.Where(Directory.Exists);
 
-		public CategoryViewModel Category
-		{
-			get { return _category; }
-			set { _category = value; }
+			// Find all the art files under the paths, and group them by ID, BookType, and Name.
+			// This complex key will allow us to use the key to populate and sort the books in one step.
+			var books = searchPaths
+				.SelectMany(f => Directory.GetFiles(f, "*.*", SearchOption.AllDirectories))
+				.Where(n => ValidRegex.IsMatch(Path.GetFileName(n)))
+				.Select(n => new ArtFile(n))
+				.GroupBy(f => new {ItemId = f.Id, f.BookType, f.Name});
+
+			var sortedBooks = books
+				.Select(v => new BookViewModel(this)
+					{ BookType = v.Key.BookType, Name = v.Key.Name, ItemId = v.Key.ItemId })
+				.OrderBy(v => v.BookType);
+
+			foreach (var bookViewModel in sortedBooks) {
+				Children.Add(bookViewModel);
+			}
+
+			//foreach (var book in books) {
+			//	var firstArtFile = book.First();
+			//	var vm = new BookViewModel(this)
+			//		{
+			//		BookType = firstArtFile.BookType,
+			//		ItemId = firstArtFile.Id,
+			//		Name = firstArtFile.Name
+			//		};
+			//	Children.Add(vm);
+			//}
+
 		}
 	}
 }
