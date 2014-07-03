@@ -5,11 +5,12 @@
 
 	public class ArtFile
 	{
-		private readonly string _path;
 		private readonly int _index;
 		private readonly int _id;
 		private readonly string _name;
+		private readonly FileInfo _fileInfo;
 		private readonly BookType _bookType;
+		private readonly ArtFileType _artFileType;
 
 		static readonly Regex ValidRegex = new Regex(@"^(\d+) +(.*)[ -]+[Pp]g? ?0?(\d+).*\.(PDF|TIF)",
 			RegexOptions.IgnoreCase | RegexOptions.Compiled);
@@ -19,10 +20,9 @@
 
 		public ArtFile(string path)
 		{
-			_path = path;
-			var filename = Path.GetFileName(_path);
-			var match = ValidRegex.Match(filename);
-			var suffMatch = SuffixRegex.Match(_path);
+			_fileInfo = new FileInfo(path);
+			var match = ValidRegex.Match(_fileInfo.Name);
+			var suffMatch = SuffixRegex.Match(_fileInfo.FullName);
 
 			var idString = match.Groups[1].Value;
 			var indexString = match.Groups[3].Value;
@@ -30,8 +30,9 @@
 
 			_id = int.TryParse(idString, out refInt) ? refInt : 0;
 			_index = int.TryParse(indexString, out refInt) ? refInt : 0;
-			_name = match.Groups[2].Value;
+			_name = match.Groups[2].Value.ToUpper();
 			_bookType = GetBookType(suffMatch.Groups[1].Value);
+			_artFileType = GetArtFileType(match.Groups[4].Value);
 		}
 
 		public int Id
@@ -54,6 +55,18 @@
 			get { return _bookType; }
 		}
 
+		public ArtFileType ArtFileType
+		{
+			get { return _artFileType; }
+		}
+
+		public string ParentPath 
+		{
+			get { return _fileInfo.DirectoryName; }
+		}
+
+		//public string BookPath { get; set; }
+
 		private static BookType GetBookType(string match)
 		{
 			switch (match.ToUpper()) {
@@ -66,6 +79,11 @@
 			}
 
 			return BookType.Pace;
+		}
+
+		private static ArtFileType GetArtFileType(string match)
+		{
+			return match.ToUpper() == "TIF" ? ArtFileType.Tif : ArtFileType.Pdf;
 		}
 	}
 }

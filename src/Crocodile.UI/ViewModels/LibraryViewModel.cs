@@ -11,9 +11,10 @@
 	{
 		private readonly ReadOnlyCollection<CategoryViewModel> _categories;
 
-		public LibraryViewModel()
+		public LibraryViewModel(BookConductorViewModel bookConductor)
 		{
 			_categories = new ReadOnlyCollection<CategoryViewModel>(CategoryRepo.GetCategories());
+			BookConductor = bookConductor;
 		}
 
 		public ReadOnlyCollection<CategoryViewModel> Categories
@@ -21,5 +22,7 @@
 			get { return _categories; }
 		}
 
+		public BookConductorViewModel BookConductor { get; private set; }
+			
 	}
 }

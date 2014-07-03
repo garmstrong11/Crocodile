@@ -90,21 +90,28 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Infrastructure\AceLibrary.cs" />
+    <Compile Include="Infrastructure\BookSelectedEvent.cs" />
     <Compile Include="Infrastructure\DebugLogger.cs" />
     <Compile Include="Infrastructure\SiBootstrapper.cs" />
+    <Compile Include="ViewModels\BookConductorViewModel.cs" />
+    <Compile Include="ViewModels\BookTreeViewItemViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\CategoryRepo.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CrocScreen.cs" />
     <Compile Include="ViewModels\ICrocScreen.cs" />
     <Compile Include="ViewModels\IShell.cs" />
-    <Compile Include="ViewModels\JobFileViewModel.cs" />
     <Compile Include="ViewModels\JobsViewModel.cs" />
     <Compile Include="ViewModels\LibraryViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
+    <Compile Include="Views\BookConductorView.xaml.cs">
+      <DependentUpon>BookConductorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BookView.xaml.cs">
+      <DependentUpon>BookView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LibraryView.xaml.cs">
       <DependentUpon>LibraryView.xaml</DependentUpon>
     </Compile>
@@ -147,6 +154,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\BookConductorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\JobsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +177,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ViewModels\JobFolders.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Images\112_ArrowCurve_Blue_Right_16x16_72.png" />
+    <Resource Include="Views\Images\Book_Green_48x48.png" />
+    <Resource Include="Views\Images\FolderOpen_16x16_72.png" />
+    <Resource Include="Views\Images\Folder_16x16.png" />
+    <Resource Include="Views\Images\search_glyph.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

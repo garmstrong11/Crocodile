@@ -58,7 +58,7 @@
 			}
 		}
 
-		public bool IsSelected
+		public virtual bool IsSelected
 		{
 			get { return _isSelected; }
 			set

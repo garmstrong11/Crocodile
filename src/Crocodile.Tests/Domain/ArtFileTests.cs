@@ -32,5 +32,12 @@
 		{
 			return new ArtFile(test).BookType;
 		}
+
+		[TestCase("6721 math1121-1123 pg40 sk.PDF", Result = ArtFileType.Pdf)]
+		[TestCase("6721 math1121-1123 pg40 sk.tif", Result = ArtFileType.Tif)]
+		public ArtFileType ArtFileType_ReturnsCorrectType(string test)
+		{
+			return new ArtFile(test).ArtFileType;
+		}
 	}
 }

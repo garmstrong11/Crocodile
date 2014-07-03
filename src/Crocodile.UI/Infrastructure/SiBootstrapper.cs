@@ -22,6 +22,8 @@
 			_container.Register<IWindowManager, WindowManager>();
 			_container.RegisterSingle<IEventAggregator, EventAggregator>();
 			_container.Register<IShell, ShellViewModel>();
+			_container.Register(typeof(BookConductorViewModel));
+			_container.Register(typeof(LibraryViewModel));
 		}
 
 		protected override object GetInstance(Type service, string key)

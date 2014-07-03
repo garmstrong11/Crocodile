@@ -1,19 +1,39 @@
 ﻿namespace Crocodile.UI.ViewModels
 {
 	using System.Collections.Generic;
+	using Caliburn.Micro;
 	using Domain;
 
-	public class BookViewModel : TreeViewItemViewModel
+	public class BookViewModel : Screen
 	{
-		
-		public BookViewModel(TreeViewItemViewModel parent)
-			: base(parent)
+		private int _id;
+		private readonly IList<ArtFile> _pdfFiles;
+		private readonly IList<ArtFile> _tifFiles;
+
+		public BookViewModel()
 		{
 			
 		}
-		
-		public string Name { get; set; }
-		public int ItemId { get; set; }
-		public BookType BookType { get; set; }
+
+		public int Id
+		{
+			get { return _id; }
+			set
+			{
+				if (value == _id) return;
+				_id = value;
+				NotifyOfPropertyChange();
+			}
+		}
+
+		public string ArtFilesSource { get; set; }
+
+		public IList<ArtFile> ArtFiles { get; set; } 
+
+		protected override void OnActivate()
+		{
+			if (_id == 0) return;
+			if (string.IsNullOrEmpty(ArtFilesSource)) return;
+		}
 	}
 }
