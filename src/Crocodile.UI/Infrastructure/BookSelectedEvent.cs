@@ -2,12 +2,16 @@
 {
 	using System.Collections.Generic;
 	using Domain;
+	using ViewModels;
 
 	public class BookSelectedEvent
 	{
+		public BookSelectedEvent(BookTreeViewItemViewModel viewModel)
+		{
+			BookTreeViewItemViewModel = viewModel;
+		}
+
+		public BookTreeViewItemViewModel BookTreeViewItemViewModel { get; private set; }
 		public bool IsSelected { get; set; }
-		public int ItemId { get; set; }
-		public string ProjectPath { get; set; }
-		public IList<ArtFile> ArtFiles { get; set; }
 	}
 }

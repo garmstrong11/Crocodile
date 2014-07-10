@@ -27,11 +27,6 @@
 			get { return _name; }
 		}
 
-		//public string ProjectPath
-		//{
-		//	get { return _path; }
-		//}
-
 		public string ArtFilesSourcePath
 		{
 			get
@@ -50,31 +45,26 @@
 
 		protected override void LoadChildren()
 		{
-			var artFiles = Directory.GetFiles(ArtFilesSourcePath, "*.*", SearchOption.AllDirectories)
+			var bookLookup = Directory
+				.GetFiles(ArtFilesSourcePath, "*.*", SearchOption.AllDirectories)
 				.Where(n => ValidRegex.IsMatch(Path.GetFileName(n) ?? ""))
 				.Select(n => new ArtFile(n))
-				.ToList();
+				.ToLookup(k => new { k.Id, k.BookType, k.Name });
 
-			//var books = Directory.GetFiles(ArtFilesSourcePath, "*.*", SearchOption.AllDirectories)
-			//	.Where(n => ValidRegex.IsMatch(Path.GetFileName(n) ?? ""))
-			//	.Select(n => new ArtFile(n))
-			//	.GroupBy(f => new { ItemId = f.Id, f.BookType, f.Name });
-
-			// Find all the pdf files under the paths, and group them by ID, BookType, and Name.
-			// This complex key will allow us to use the key to populate and sort the books in one step.
-			var books = artFiles.GroupBy(f => new {ItemId = f.Id, f.BookType, f.Name});
-
-			var sortedBooks = books
+			var books = bookLookup
 				.Select(v => new BookTreeViewItemViewModel(this)
 					{ BookType = v.Key.BookType, 
 						Name = v.Key.Name, 
-						ItemId = v.Key.ItemId,
+						ItemId = v.Key.Id,
 						PageSourcePath = ArtFilesSourcePath,
-						ArtFiles = new List<ArtFile>(artFiles.Where(f => f.Id == v.Key.ItemId).ToList())
+						ArtFiles = bookLookup[v.Key].ToList()
 					})
 				.OrderBy(v => v.BookType);
 
-			foreach (var bookViewModel in sortedBooks) {
+			foreach (var bookViewModel in books) {
+				var firstPdf = bookViewModel.ArtFiles.FirstOrDefault(b => b.ArtFileType == ArtFileType.Pdf);
+				if (firstPdf != null) bookViewModel.PageSourcePath = firstPdf.ParentPath;
+
 				Children.Add(bookViewModel);
 			}
 		}

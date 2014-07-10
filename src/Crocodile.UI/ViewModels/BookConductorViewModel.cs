@@ -12,12 +12,7 @@
 		
 		public void Handle(BookSelectedEvent message)
 		{
-			var bvm = new BookViewModel
-				{
-				Id = message.ItemId, 
-				ArtFilesSource = message.ProjectPath,
-				ArtFiles = message.ArtFiles
-				};
+			var bvm = new BookViewModel(message.BookTreeViewItemViewModel);
 
 			if (!message.IsSelected) {
 				DeactivateItem(bvm, true);

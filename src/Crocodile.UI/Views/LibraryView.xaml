@@ -82,6 +82,16 @@
           <DataTemplate DataType="{x:Type vm:BookTreeViewItemViewModel}">
             <StackPanel Style="{StaticResource TreeStackStyle}"
                         cal:Bind.ModelWithoutContext="{Binding}">
+              <StackPanel.ContextMenu>
+                <ContextMenu>
+                  <MenuItem Header="Open Folder"
+                            cal:Message.Attach="[Event Click] = [Action OpenPageSourceFolder()]">
+                    <MenuItem.Icon>
+                      <Image Source="Images/112_ArrowCurve_Blue_Right_16x16_72.png"/>
+                    </MenuItem.Icon>
+                  </MenuItem>
+                </ContextMenu>
+              </StackPanel.ContextMenu>
               <Image Style="{StaticResource TreeIconStyle}" 
                      Source="Images/Book_Green_48x48.png" />
               <TextBlock Text="{Binding ItemId}" />

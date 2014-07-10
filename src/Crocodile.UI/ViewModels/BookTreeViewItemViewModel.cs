@@ -2,6 +2,7 @@
 {
 	using System.Collections;
 	using System.Collections.Generic;
+	using System.Diagnostics;
 	using Caliburn.Micro;
 	using Domain;
 	using Infrastructure;
@@ -28,15 +29,15 @@
 			set
 			{
 				base.IsSelected = value;
-				var bse = new BookSelectedEvent
-					{
-					ItemId = ItemId, 
-					ProjectPath = PageSourcePath, 
-					IsSelected = value,
-					ArtFiles = ArtFiles
-					};
+				var bse = new BookSelectedEvent(this);
+				bse.IsSelected = value;
 				_events.Publish(bse);
 			}
+		}
+
+		public void OpenPageSourceFolder()
+		{
+			Process.Start(PageSourcePath);
 		}
 	}
 }

@@ -15,7 +15,7 @@
 		static readonly Regex ValidRegex = new Regex(@"^(\d+) +(.*)[ -]+[Pp]g? ?0?(\d+).*\.(PDF|TIF)",
 			RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-		static readonly Regex SuffixRegex = new Regex(@"\b(ak|sk|ap)\b", 
+		static readonly Regex SuffixRegex = new Regex(@"[ \d](ak|sk|ap)", 
 			RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 		public ArtFile(string path)
@@ -32,7 +32,7 @@
 			_index = int.TryParse(indexString, out refInt) ? refInt : 0;
 			_name = match.Groups[2].Value.ToUpper();
 			_bookType = GetBookType(suffMatch.Groups[1].Value);
-			_artFileType = GetArtFileType(match.Groups[4].Value);
+			_artFileType = GetArtFileType(_fileInfo.Extension);
 		}
 
 		public int Id
@@ -48,6 +48,11 @@
 		public string Name
 		{
 			get { return _name; }
+		}
+
+		public FileInfo FileInfo
+		{
+			get { return _fileInfo; }
 		}
 
 		public BookType BookType
@@ -81,9 +86,9 @@
 			return BookType.Pace;
 		}
 
-		private static ArtFileType GetArtFileType(string match)
+		private static ArtFileType GetArtFileType(string extension)
 		{
-			return match.ToUpper() == "TIF" ? ArtFileType.Tif : ArtFileType.Pdf;
+			return extension.ToUpper() == ".TIF" ? ArtFileType.Tif : ArtFileType.Pdf;
 		}
 	}
 }
