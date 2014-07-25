@@ -13,11 +13,18 @@
         </Trigger>
       </Style.Triggers>
     </Style>
+    <Style TargetType="Button">
+      <Setter Property="Margin" Value="9"/>
+      <Setter Property="Padding" Value="9 3" />
+    </Style>
   </UserControl.Resources>
   <DockPanel>
-    <StackPanel DockPanel.Dock="Top">
-      <TextBlock x:Name="Id"/>
-      <TextBlock x:Name="ArtFilesSource" />
+    <StackPanel DockPanel.Dock="Bottom"
+                Orientation="Horizontal"
+                HorizontalAlignment="Stretch"
+                Background="LightSlateGray">
+      <Button x:Name="AddToBatch"
+              Content="Add To Batch"/>
     </StackPanel>
     <ListView x:Name="Pages"
              ItemContainerStyle="{StaticResource Alternator}"

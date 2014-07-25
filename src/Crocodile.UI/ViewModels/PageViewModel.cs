@@ -14,9 +14,10 @@
 			var files = artfiles.ToList();
 			PdfArtFile = files.FirstOrDefault(f => f.ArtFileType == ArtFileType.Pdf);
 			TifArtFile = files.FirstOrDefault(f => f.ArtFileType == ArtFileType.Tif);
+			IsSelected = TifArtFile == null;
 		}
 		
-		public ArtFile PdfArtFile { get; set; }
+		public ArtFile PdfArtFile { get; private set; }
 		public ArtFile TifArtFile { get; set; }
 
 		public string PdfFileName

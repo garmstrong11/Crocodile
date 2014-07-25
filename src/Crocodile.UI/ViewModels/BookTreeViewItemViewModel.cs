@@ -29,8 +29,7 @@
 			set
 			{
 				base.IsSelected = value;
-				var bse = new BookSelectedEvent(this);
-				bse.IsSelected = value;
+				var bse = new BookSelectedEvent(this) {IsSelected = value};
 				_events.Publish(bse);
 			}
 		}

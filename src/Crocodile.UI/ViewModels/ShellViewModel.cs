@@ -10,6 +10,7 @@
 		public ShellViewModel()
 		{
 			Items.Add(IoC.Get<LibraryViewModel>());
+			DisplayName = "Crocodile!";
 		}
 
 		//public IEnumerable<IScreen> Items

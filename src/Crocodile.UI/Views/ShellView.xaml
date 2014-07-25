@@ -1,32 +1,9 @@
 ﻿<Window x:Class="Crocodile.UI.Views.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ShellView" Height="500" Width="700"
+        Title="ShellView" Height="700" Width="700"
         Background="LightGray">
-    <DockPanel Margin="9">
-        <!--<ItemsControl x:Name="Items"
-                      DockPanel.Dock="Top">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                   <StackPanel Orientation="Horizontal"/> 
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Content="{Binding}"
-                            Margin="0 0 9 0"
-                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-                        
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
-        <TabControl x:Name="Items"
-                    DockPanel.Dock="Top"/>
-        <!--<Border BorderThickness="1"
-                CornerRadius="9"
-                BorderBrush="LightCoral">
-            <ContentControl x:Name="Screens"></ContentControl>
-        </Border>-->
-    </DockPanel>
+  <DockPanel Margin="9">
+    <TabControl x:Name="Items" DockPanel.Dock="Top"/>
+  </DockPanel>
 </Window>

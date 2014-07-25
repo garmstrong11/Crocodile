@@ -15,6 +15,7 @@
 		{
 			_categories = new ReadOnlyCollection<CategoryViewModel>(CategoryRepo.GetCategories());
 			BookConductor = bookConductor;
+			DisplayName = "Ace Library Browser";
 		}
 
 		public ReadOnlyCollection<CategoryViewModel> Categories

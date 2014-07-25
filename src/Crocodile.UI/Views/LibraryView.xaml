@@ -21,9 +21,9 @@
   <tck:BusyIndicator IsBusy="{Binding IsBusy}">
     <Grid Margin="9">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="9" />
         <ColumnDefinition Width="3*" />
+        <ColumnDefinition Width="9" />
+        <ColumnDefinition Width="4*" />
       </Grid.ColumnDefinitions>
       <TreeView ItemsSource="{Binding Categories}">
         <TreeView.ItemContainerStyle>
