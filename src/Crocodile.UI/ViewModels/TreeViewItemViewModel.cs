@@ -1,6 +1,7 @@
 ﻿namespace Crocodile.UI.ViewModels
 {
 	using System.Collections.ObjectModel;
+	using System.Windows.Input;
 	using Caliburn.Micro;
 
 	public class TreeViewItemViewModel : PropertyChangedBase
@@ -10,6 +11,7 @@
 		private readonly ObservableCollection<TreeViewItemViewModel> _children;
 		private bool _isExpanded;
 		private bool _isSelected;
+		private Cursor _cursor;
 
 		protected TreeViewItemViewModel(TreeViewItemViewModel parent, bool lazyLoadChildren = true)
 		{
@@ -36,6 +38,17 @@
 		public TreeViewItemViewModel Parent
 		{
 			get { return _parent; }
+		}
+
+		public Cursor Cursor
+		{
+			get { return _cursor; }
+			set
+			{
+				if (Equals(value, _cursor)) return;
+				_cursor = value;
+				NotifyOfPropertyChange(() => Cursor);
+			}
 		}
 
 		public bool IsExpanded

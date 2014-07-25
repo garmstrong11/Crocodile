@@ -1,15 +1,11 @@
 ﻿namespace Crocodile.UI.ViewModels
 {
-	using System.Collections.Generic;
 	using System.Linq;
 	using Caliburn.Micro;
-	using Domain;
 
 	public class BookViewModel : Screen
 	{
 		private readonly BookTreeViewItemViewModel _bookModel;
-		private readonly IList<ArtFile> _pdfFiles;
-		private readonly IList<ArtFile> _tifFiles;
 
 		public BookViewModel(BookTreeViewItemViewModel bookModel)
 		{

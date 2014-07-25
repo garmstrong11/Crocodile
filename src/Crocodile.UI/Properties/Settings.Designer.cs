@@ -22,17 +22,5 @@ namespace Crocodile.UI.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\San\\Araxivolume_ace\\Jobs")]
-        public string SourceDir {
-            get {
-                return ((string)(this["SourceDir"]));
-            }
-            set {
-                this["SourceDir"] = value;
-            }
-        }
     }
 }

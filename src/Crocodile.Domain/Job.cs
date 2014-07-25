@@ -51,7 +51,7 @@
 
 		public static IEnumerable<string> GetJobPaths()
 		{
-			var pathHeader = Settings.Default.JobRootFolder;
+			var pathHeader = Settings.Default.SourceDir;
 			const string pathTrailer1 = @"UserDefinedFolders\Customer Originals";
 			const string pathTrailer2 = @"UserDefinedFolders\PartsMaster\Customer Originals\Copydot";
 

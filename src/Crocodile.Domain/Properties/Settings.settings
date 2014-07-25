@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Crocodile.Domain.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="JobRootFolder" Type="System.String" Scope="User">
+    <Setting Name="SourceDir" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\San\araxivolume_ace\Jobs</Value>
     </Setting>
   </Settings>
