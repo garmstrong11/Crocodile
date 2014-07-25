@@ -6,6 +6,7 @@
 	using System.Linq;
 	using System.Text.RegularExpressions;
 	using Domain;
+	using Infrastructure;
 
 	public class ProjectViewModel : TreeViewItemViewModel
 	{
@@ -45,6 +46,8 @@
 
 		protected override void LoadChildren()
 		{
+			UiServices.SetBusyState();
+			
 			var bookLookup = Directory
 				.GetFiles(ArtFilesSourcePath, "*.*", SearchOption.AllDirectories)
 				.Where(n => ValidRegex.IsMatch(Path.GetFileName(n) ?? ""))

@@ -93,6 +93,7 @@
     <Compile Include="Infrastructure\BookSelectedEvent.cs" />
     <Compile Include="Infrastructure\DebugLogger.cs" />
     <Compile Include="Infrastructure\SiBootstrapper.cs" />
+    <Compile Include="Infrastructure\UiServices.cs" />
     <Compile Include="ViewModels\BookConductorViewModel.cs" />
     <Compile Include="ViewModels\BookTreeViewItemViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />

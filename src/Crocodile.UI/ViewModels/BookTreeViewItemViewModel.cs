@@ -1,6 +1,5 @@
 ﻿namespace Crocodile.UI.ViewModels
 {
-	using System.Collections;
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using Caliburn.Micro;

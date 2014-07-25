@@ -12,6 +12,8 @@
 		
 		public void Handle(BookSelectedEvent message)
 		{
+			UiServices.SetBusyState();
+
 			var bvm = new BookViewModel(message.BookTreeViewItemViewModel);
 
 			if (!message.IsSelected) {
