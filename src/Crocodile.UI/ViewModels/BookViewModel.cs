@@ -2,14 +2,23 @@
 {
 	using System.Linq;
 	using Caliburn.Micro;
+	using Infrastructure;
 
 	public class BookViewModel : Screen
 	{
 		private readonly BookTreeViewItemViewModel _bookModel;
+		private readonly IProgressViewModel _progressViewModel;
+		private readonly IWindowManager _windowManager;
+
 		private BindableCollection<PageViewModel> _pages;
 
-		public BookViewModel(BookTreeViewItemViewModel bookModel)
+		public BookViewModel(
+			IProgressViewModel progressViewModel, 
+			IWindowManager windowManager,
+			BookTreeViewItemViewModel bookModel)
 		{
+			_progressViewModel = progressViewModel;
+			_windowManager = windowManager;
 			_bookModel = bookModel;
 		}
 
@@ -31,7 +40,21 @@
 				if (Equals(value, _pages)) return;
 				_pages = value;
 				NotifyOfPropertyChange(() => Pages);
+
+				foreach (var page in Pages) {
+					page.PropertyChanged += PageIsSelectedPropertyChanged;
+				}
 			}
+		}
+
+		void PageIsSelectedPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			var pg = sender as PageViewModel;
+			if (pg == null) return;
+			if (e.PropertyName != "IsSelected") return;
+
+			NotifyOfPropertyChange(() => CanSelectAll);
+			NotifyOfPropertyChange(() => CanDeselectAll);
 		}
 
 		protected override void OnViewLoaded(object view)
@@ -42,11 +65,54 @@
 				.GroupBy(f => f.Index)
 				.OrderBy(f => f.Key);
 
-			foreach (var pageGroup in pageGroups)
-			{
-				Pages.Add(new PageViewModel(pageGroup));
+			foreach (var pageGroup in pageGroups) {
+				var pg = new PageViewModel(pageGroup);
+				pg.PropertyChanged += PageIsSelectedPropertyChanged;
+				Pages.Add(pg);
 			}
-			
+		}
+
+		public bool CanDescreen()
+		{
+			return Pages.Any(p => p.IsSelected);
+		}
+
+		public bool CanDeselectAll
+		{
+			get { return Pages.Any(p => p.IsSelected); }
+		}
+
+		public void DeselectAll()
+		{
+			foreach (var page in Pages) {
+				page.IsSelected = false;
+			}
+		}
+
+		public bool CanSelectAll
+		{
+			get { return Pages.Any(p => p.IsSelected == false); }
+		}
+
+		public void SelectAll()
+		{
+			foreach (var page in Pages) {
+				page.IsSelected = true;
+			}
+		}
+
+		public void InvertSelection()
+		{
+			foreach (var page in Pages) {
+				page.IsSelected = !page.IsSelected;
+			}
+		}
+
+		public void Descreen()
+		{
+			_progressViewModel.Items = Pages.Where(p => p.IsSelected).ToList();
+
+			_windowManager.ShowDialog(_progressViewModel);
 		}
 	}
 }

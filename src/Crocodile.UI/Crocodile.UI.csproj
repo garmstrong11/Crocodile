@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Infrastructure\BookSelectedEvent.cs" />
     <Compile Include="Infrastructure\DebugLogger.cs" />
+    <Compile Include="Infrastructure\PageSelectionChangedEvent.cs" />
     <Compile Include="Infrastructure\SiBootstrapper.cs" />
     <Compile Include="Infrastructure\UiServices.cs" />
     <Compile Include="ViewModels\BookConductorViewModel.cs" />
@@ -100,28 +101,19 @@
     <Compile Include="ViewModels\CategoryRepo.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\CrocScreen.cs" />
+    <Compile Include="ViewModels\IBookViewModelFactory.cs" />
     <Compile Include="ViewModels\ICrocScreen.cs" />
+    <Compile Include="ViewModels\IProgressViewModel.cs" />
     <Compile Include="ViewModels\IShell.cs" />
     <Compile Include="ViewModels\JobsViewModel.cs" />
     <Compile Include="ViewModels\LibraryViewModel.cs" />
     <Compile Include="ViewModels\PageViewModel.cs" />
+    <Compile Include="ViewModels\ProgressViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
-    <Compile Include="Views\BookConductorView.xaml.cs">
-      <DependentUpon>BookConductorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\BookView.xaml.cs">
-      <DependentUpon>BookView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LibraryView.xaml.cs">
-      <DependentUpon>LibraryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageView.xaml.cs">
-      <DependentUpon>PageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ShellView.xaml.cs">
-      <DependentUpon>ShellView.xaml</DependentUpon>
+    <Compile Include="Views\ProgressView.xaml.cs">
+      <DependentUpon>ProgressView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProgressView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

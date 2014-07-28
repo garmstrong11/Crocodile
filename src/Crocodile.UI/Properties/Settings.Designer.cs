@@ -22,5 +22,17 @@ namespace Crocodile.UI.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\SAN\\AraxiVolume_ACE\\Jobs\\ACE_with_copydot_JTP_All_Test")]
+        public string PrinergyHotFolderPath {
+            get {
+                return ((string)(this["PrinergyHotFolderPath"]));
+            }
+            set {
+                this["PrinergyHotFolderPath"] = value;
+            }
+        }
     }
 }

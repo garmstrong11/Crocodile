@@ -24,6 +24,7 @@
 			_container.Register<IShell, ShellViewModel>();
 			_container.Register(typeof(BookConductorViewModel));
 			_container.Register(typeof(LibraryViewModel));
+			_container.Register<IProgressViewModel, ProgressViewModel>();
 		}
 
 		protected override object GetInstance(Type service, string key)

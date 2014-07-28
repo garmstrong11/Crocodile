@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Crocodile.UI.Views
 {
 	/// <summary>
-	/// Interaction logic for LibraryView.xaml
+	/// Interaction logic for ProgressView.xaml
 	/// </summary>
-	public partial class LibraryView : UserControl
+	public partial class ProgressView : UserControl
 	{
-		public LibraryView()
+		public ProgressView()
 		{
 			InitializeComponent();
 		}

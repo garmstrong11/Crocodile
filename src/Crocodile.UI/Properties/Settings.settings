@@ -1,5 +1,9 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Crocodile.UI.Properties" GeneratedClassName="Settings">
   <Profiles />
-  <Settings />
+  <Settings>
+    <Setting Name="PrinergyHotFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\SAN\AraxiVolume_ACE\Jobs\ACE_with_copydot_JTP_All_Test</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

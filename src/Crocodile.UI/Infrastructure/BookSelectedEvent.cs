@@ -1,7 +1,5 @@
 ﻿namespace Crocodile.UI.Infrastructure
 {
-	using System.Collections.Generic;
-	using Domain;
 	using ViewModels;
 
 	public class BookSelectedEvent
