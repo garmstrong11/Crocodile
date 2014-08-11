@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SourceDir" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\San\araxivolume_ace\Jobs</Value>
+      <Value Profile="(Default)">\\Storage2\araxivolume_ace\Jobs</Value>
     </Setting>
   </Settings>
 </SettingsFile>

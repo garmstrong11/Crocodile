@@ -1,4 +1,4 @@
-﻿namespace Crocodile.Domain
+﻿namespace Crocodile.UI.Infrastructure
 {
 	using System.Collections.Generic;
 	using System.IO;

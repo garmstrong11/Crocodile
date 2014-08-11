@@ -13,7 +13,7 @@ namespace Crocodile.UI.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -25,13 +25,25 @@ namespace Crocodile.UI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\SAN\\AraxiVolume_ACE\\Jobs\\ACE_with_copydot_JTP_All_Test")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\Storage2\\AraxiVolume_ACE\\Jobs\\ACE_with_copydot_JTP_All")]
         public string PrinergyHotFolderPath {
             get {
                 return ((string)(this["PrinergyHotFolderPath"]));
             }
             set {
                 this["PrinergyHotFolderPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\Storage2\\Araxivolume_ACE\\Jobs")]
+        public string SourceDir {
+            get {
+                return ((string)(this["SourceDir"]));
+            }
+            set {
+                this["SourceDir"] = value;
             }
         }
     }

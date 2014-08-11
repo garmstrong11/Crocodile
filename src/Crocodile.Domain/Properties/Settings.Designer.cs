@@ -25,7 +25,7 @@ namespace Crocodile.Domain.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\San\\araxivolume_ace\\Jobs")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\Storage2\\araxivolume_ace\\Jobs")]
         public string SourceDir {
             get {
                 return ((string)(this["SourceDir"]));

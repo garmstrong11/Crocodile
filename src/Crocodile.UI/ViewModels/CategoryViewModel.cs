@@ -3,7 +3,6 @@
 	using System.IO;
 	using System.Linq;
 	using System.Text.RegularExpressions;
-	using Domain;
 	using Infrastructure;
 
 	public class CategoryViewModel : TreeViewItemViewModel

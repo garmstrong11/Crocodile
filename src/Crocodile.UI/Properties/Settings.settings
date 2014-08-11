@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="PrinergyHotFolderPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\SAN\AraxiVolume_ACE\Jobs\ACE_with_copydot_JTP_All_Test</Value>
+      <Value Profile="(Default)">\\Storage2\AraxiVolume_ACE\Jobs\ACE_with_copydot_JTP_All</Value>
+    </Setting>
+    <Setting Name="SourceDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\Storage2\Araxivolume_ACE\Jobs</Value>
     </Setting>
   </Settings>
 </SettingsFile>
